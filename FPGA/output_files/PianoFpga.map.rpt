@@ -1,0 +1,475 @@
+Analysis & Synthesis report for PianoFpga
+Tue Jun 11 19:28:51 2024
+Quartus Prime Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. State Machine - |demo_rainbow|color_transition_start
+  9. State Machine - |demo_rainbow|color_transition_live
+ 10. Registers Removed During Synthesis
+ 11. General Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: Top-level Entity: |demo_rainbow
+ 14. Parameter Settings for User Entity Instance: ws2812b_phy:ws2812b_phy_inst
+ 15. Port Connectivity Checks: "ws2812b_phy:ws2812b_phy_inst"
+ 16. Post-Synthesis Netlist Statistics for Top Partition
+ 17. Elapsed Time Per Partition
+ 18. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2023  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++-------------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                        ;
++------------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status        ; Successful - Tue Jun 11 19:28:51 2024          ;
+; Quartus Prime Version              ; 23.1std.0 Build 991 11/28/2023 SC Lite Edition ;
+; Revision Name                      ; PianoFpga                                      ;
+; Top-level Entity Name              ; demo_rainbow                                   ;
+; Family                             ; MAX 10                                         ;
+; Total logic elements               ; 423                                            ;
+;     Total combinational functions  ; 419                                            ;
+;     Dedicated logic registers      ; 129                                            ;
+; Total registers                    ; 129                                            ;
+; Total pins                         ; 2                                              ;
+; Total virtual pins                 ; 0                                              ;
+; Total memory bits                  ; 0                                              ;
+; Embedded Multiplier 9-bit elements ; 0                                              ;
+; Total PLLs                         ; 0                                              ;
+; UFM blocks                         ; 0                                              ;
+; ADC blocks                         ; 0                                              ;
++------------------------------------+------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                              ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                           ; Setting            ; Default Value      ;
++------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                           ; 10M50DAF484C7G     ;                    ;
+; Top-level entity name                                            ; demo_rainbow       ; PianoFpga          ;
+; Family name                                                      ; MAX 10             ; Cyclone V          ;
+; Use smart compilation                                            ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                      ; Off                ; Off                ;
+; Restructure Multiplexers                                         ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                              ; Off                ; Off                ;
+; Preserve fewer node names                                        ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                    ; Enable             ; Enable             ;
+; Verilog Version                                                  ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                     ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                         ; Auto               ; Auto               ;
+; Safe State Machine                                               ; Off                ; Off                ;
+; Extract Verilog State Machines                                   ; On                 ; On                 ;
+; Extract VHDL State Machines                                      ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                       ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                   ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                          ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                        ; On                 ; On                 ;
+; Parallel Synthesis                                               ; On                 ; On                 ;
+; DSP Block Balancing                                              ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                               ; On                 ; On                 ;
+; Power-Up Don't Care                                              ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                     ; Off                ; Off                ;
+; Remove Duplicate Registers                                       ; On                 ; On                 ;
+; Ignore CARRY Buffers                                             ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                           ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                            ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                        ; Off                ; Off                ;
+; Ignore LCELL Buffers                                             ; Off                ; Off                ;
+; Ignore SOFT Buffers                                              ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                   ; Off                ; Off                ;
+; Optimization Technique                                           ; Balanced           ; Balanced           ;
+; Carry Chain Length                                               ; 70                 ; 70                 ;
+; Auto Carry Chains                                                ; On                 ; On                 ;
+; Auto Open-Drain Pins                                             ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                            ; Off                ; Off                ;
+; Auto ROM Replacement                                             ; On                 ; On                 ;
+; Auto RAM Replacement                                             ; On                 ; On                 ;
+; Auto DSP Block Replacement                                       ; On                 ; On                 ;
+; Auto Shift Register Replacement                                  ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                  ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                    ; On                 ; On                 ;
+; Strict RAM Replacement                                           ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                           ; Off                ; Off                ;
+; Auto RAM Block Balancing                                         ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                ; Off                ; Off                ;
+; Auto Resource Sharing                                            ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                               ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                    ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing              ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                ; Off                ; Off                ;
+; Timing-Driven Synthesis                                          ; On                 ; On                 ;
+; Report Parameter Settings                                        ; On                 ; On                 ;
+; Report Source Assignments                                        ; On                 ; On                 ;
+; Report Connectivity Checks                                       ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                               ; Off                ; Off                ;
+; Synchronization Register Chain Length                            ; 2                  ; 2                  ;
+; Power Optimization During Synthesis                              ; Normal compilation ; Normal compilation ;
+; HDL message level                                                ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                  ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report         ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report               ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report        ; 100                ; 100                ;
+; Clock MUX Protection                                             ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                      ; Off                ; Off                ;
+; Block Design Naming                                              ; Auto               ; Auto               ;
+; SDC constraint protection                                        ; Off                ; Off                ;
+; Synthesis Effort                                                 ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal     ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                             ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                               ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                      ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                           ; On                 ; On                 ;
++------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processors 2-4         ;   0.0%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                                                                        ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                                                                                 ; Library ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+; output_files/ws2812b_gamma.vhd   ; yes             ; User VHDL File  ; C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/output_files/ws2812b_gamma.vhd ;         ;
+; output_files/ws2812b_phy.vhd     ; yes             ; User VHDL File  ; C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/output_files/ws2812b_phy.vhd   ;         ;
+; output_files/demo_rainbow.vhd    ; yes             ; User VHDL File  ; C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/output_files/demo_rainbow.vhd  ;         ;
++----------------------------------+-----------------+-----------------+--------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+
+
++---------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary             ;
++---------------------------------------------+-----------+
+; Resource                                    ; Usage     ;
++---------------------------------------------+-----------+
+; Estimated Total logic elements              ; 423       ;
+;                                             ;           ;
+; Total combinational functions               ; 419       ;
+; Logic element usage by number of LUT inputs ;           ;
+;     -- 4 input functions                    ; 243       ;
+;     -- 3 input functions                    ; 102       ;
+;     -- <=2 input functions                  ; 74        ;
+;                                             ;           ;
+; Logic elements by mode                      ;           ;
+;     -- normal mode                          ; 344       ;
+;     -- arithmetic mode                      ; 75        ;
+;                                             ;           ;
+; Total registers                             ; 129       ;
+;     -- Dedicated logic registers            ; 129       ;
+;     -- I/O registers                        ; 0         ;
+;                                             ;           ;
+; I/O pins                                    ; 2         ;
+;                                             ;           ;
+; Embedded Multiplier 9-bit elements          ; 0         ;
+;                                             ;           ;
+; Maximum fan-out node                        ; clk~input ;
+; Maximum fan-out                             ; 129       ;
+; Total fan-out                               ; 1856      ;
+; Average fan-out                             ; 3.36      ;
++---------------------------------------------+-----------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                    ;
++---------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------+---------------+--------------+
+; Compilation Hierarchy Node                  ; Combinational ALUTs ; Dedicated Logic Registers ; Memory Bits ; UFM Blocks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; ADC blocks ; Full Hierarchy Name                                  ; Entity Name   ; Library Name ;
++---------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------+---------------+--------------+
+; |demo_rainbow                               ; 419 (144)           ; 129 (82)                  ; 0           ; 0          ; 0            ; 0       ; 0         ; 2    ; 0            ; 0          ; |demo_rainbow                                        ; demo_rainbow  ; work         ;
+;    |ws2812b_gamma:ws2812b_gamma_blue_inst|  ; 58 (58)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |demo_rainbow|ws2812b_gamma:ws2812b_gamma_blue_inst  ; ws2812b_gamma ; work         ;
+;    |ws2812b_gamma:ws2812b_gamma_green_inst| ; 60 (60)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |demo_rainbow|ws2812b_gamma:ws2812b_gamma_green_inst ; ws2812b_gamma ; work         ;
+;    |ws2812b_gamma:ws2812b_gamma_red_inst|   ; 58 (58)             ; 0 (0)                     ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |demo_rainbow|ws2812b_gamma:ws2812b_gamma_red_inst   ; ws2812b_gamma ; work         ;
+;    |ws2812b_phy:ws2812b_phy_inst|           ; 99 (99)             ; 47 (47)                   ; 0           ; 0          ; 0            ; 0       ; 0         ; 0    ; 0            ; 0          ; |demo_rainbow|ws2812b_phy:ws2812b_phy_inst           ; ws2812b_phy   ; work         ;
++---------------------------------------------+---------------------+---------------------------+-------------+------------+--------------+---------+-----------+------+--------------+------------+------------------------------------------------------+---------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |demo_rainbow|color_transition_start                                                                                                                                              ;
++---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+
+; Name                      ; color_transition_start.PR ; color_transition_start.BP ; color_transition_start.CB ; color_transition_start.GC ; color_transition_start.YG ; color_transition_start.RY ;
++---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+
+; color_transition_start.RY ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ; 0                         ;
+; color_transition_start.YG ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ; 1                         ;
+; color_transition_start.GC ; 0                         ; 0                         ; 0                         ; 1                         ; 0                         ; 1                         ;
+; color_transition_start.CB ; 0                         ; 0                         ; 1                         ; 0                         ; 0                         ; 1                         ;
+; color_transition_start.BP ; 0                         ; 1                         ; 0                         ; 0                         ; 0                         ; 1                         ;
+; color_transition_start.PR ; 1                         ; 0                         ; 0                         ; 0                         ; 0                         ; 1                         ;
++---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+---------------------------+
+
+
+Encoding Type:  One-Hot
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |demo_rainbow|color_transition_live                                                                                                                                        ;
++--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+
+; Name                     ; color_transition_live.PR ; color_transition_live.BP ; color_transition_live.CB ; color_transition_live.GC ; color_transition_live.YG ; color_transition_live.RY ;
++--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+
+; color_transition_live.RY ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ; 0                        ;
+; color_transition_live.YG ; 0                        ; 0                        ; 0                        ; 0                        ; 1                        ; 1                        ;
+; color_transition_live.GC ; 0                        ; 0                        ; 0                        ; 1                        ; 0                        ; 1                        ;
+; color_transition_live.CB ; 0                        ; 0                        ; 1                        ; 0                        ; 0                        ; 1                        ;
+; color_transition_live.BP ; 0                        ; 1                        ; 0                        ; 0                        ; 0                        ; 1                        ;
+; color_transition_live.PR ; 1                        ; 0                        ; 0                        ; 0                        ; 0                        ; 1                        ;
++--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+--------------------------+
+
+
++--------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                             ;
++---------------------------------------+----------------------------------------+
+; Register name                         ; Reason for Removal                     ;
++---------------------------------------+----------------------------------------+
+; pixData_red[0]                        ; Stuck at GND due to stuck port data_in ;
+; pixData_green[0]                      ; Stuck at GND due to stuck port data_in ;
+; pixData_blue[0]                       ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 3 ;                                        ;
++---------------------------------------+----------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 129   ;
+; Number of registers using Synchronous Clear  ; 1     ;
+; Number of registers using Synchronous Load   ; 45    ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 84    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |demo_rainbow|ws2812b_phy:ws2812b_phy_inst|pixCnt[0]   ;
+; 3:1                ; 22 bits   ; 44 LEs        ; 22 LEs               ; 22 LEs                 ; Yes        ; |demo_rainbow|ws2812b_phy:ws2812b_phy_inst|shiftreg[8] ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 2 LEs                ; 4 LEs                  ; Yes        ; |demo_rainbow|ws2812b_phy:ws2812b_phy_inst|bitCnt[9]   ;
+; 5:1                ; 5 bits    ; 15 LEs        ; 10 LEs               ; 5 LEs                  ; Yes        ; |demo_rainbow|ws2812b_phy:ws2812b_phy_inst|bitCnt[11]  ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 8 LEs                ; 4 LEs                  ; Yes        ; |demo_rainbow|ws2812b_phy:ws2812b_phy_inst|bitCnt[0]   ;
+; 6:1                ; 7 bits    ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |demo_rainbow|pixData_green[7]                         ;
+; 6:1                ; 7 bits    ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |demo_rainbow|pixData_red[6]                           ;
+; 6:1                ; 7 bits    ; 28 LEs        ; 14 LEs               ; 14 LEs                 ; Yes        ; |demo_rainbow|pixData_blue[1]                          ;
+; 13:1               ; 6 bits    ; 48 LEs        ; 24 LEs               ; 24 LEs                 ; No         ; |demo_rainbow|color_transition_start                   ;
+; 15:1               ; 6 bits    ; 60 LEs        ; 30 LEs               ; 30 LEs                 ; No         ; |demo_rainbow|color_transition_live                    ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+
+
++------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |demo_rainbow ;
++----------------+-------+-----------------------------------------------------+
+; Parameter Name ; Value ; Type                                                ;
++----------------+-------+-----------------------------------------------------+
+; LENGTH         ; 68    ; Signed Integer                                      ;
++----------------+-------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: ws2812b_phy:ws2812b_phy_inst ;
++----------------+----------+-----------------------------------------------+
+; Parameter Name ; Value    ; Type                                          ;
++----------------+----------+-----------------------------------------------+
+; f_clk          ; 50000000 ; Signed Integer                                ;
+; t0h            ; 3.5E-07  ; Signed Float                                  ;
+; t1h            ; 9.0E-07  ; Signed Float                                  ;
+; t0l            ; 9.0E-07  ; Signed Float                                  ;
+; t1l            ; 3.5E-07  ; Signed Float                                  ;
+; del            ; 1.0E-07  ; Signed Float                                  ;
+; res            ; 5.0E-05  ; Signed Float                                  ;
++----------------+----------+-----------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------+
+; Port Connectivity Checks: "ws2812b_phy:ws2812b_phy_inst" ;
++------+-------+----------+--------------------------------+
+; Port ; Type  ; Severity ; Details                        ;
++------+-------+----------+--------------------------------+
+; rst  ; Input ; Info     ; Stuck at GND                   ;
++------+-------+----------+--------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; boundary_port         ; 2                           ;
+; cycloneiii_ff         ; 129                         ;
+;     ENA               ; 46                          ;
+;     ENA SLD           ; 38                          ;
+;     SCLR              ; 1                           ;
+;     SLD               ; 7                           ;
+;     plain             ; 37                          ;
+; cycloneiii_lcell_comb ; 420                         ;
+;     arith             ; 75                          ;
+;         2 data inputs ; 45                          ;
+;         3 data inputs ; 30                          ;
+;     normal            ; 345                         ;
+;         1 data inputs ; 6                           ;
+;         2 data inputs ; 24                          ;
+;         3 data inputs ; 72                          ;
+;         4 data inputs ; 243                         ;
+;                       ;                             ;
+; Max LUT depth         ; 6.00                        ;
+; Average LUT depth     ; 3.24                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:02     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 23.1std.0 Build 991 11/28/2023 SC Lite Edition
+    Info: Processing started: Tue Jun 11 19:28:38 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off PianoFpga -c PianoFpga
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 2 design units, including 1 entities, in source file pianofpga.vhd
+    Info (12022): Found design unit 1: PianoFpga-piano File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/PianoFpga.vhd Line: 19
+    Info (12023): Found entity 1: PianoFpga File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/PianoFpga.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file uart_tx_rx.vhd
+    Info (12022): Found design unit 1: UART_TX_RX-arch File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/UART_TX_RX.vhd Line: 25
+    Info (12023): Found entity 1: UART_TX_RX File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/UART_TX_RX.vhd Line: 10
+Info (12021): Found 2 design units, including 1 entities, in source file uart_tx.vhd
+    Info (12022): Found design unit 1: UART_TX-arch File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/UART_TX.vhd Line: 28
+    Info (12023): Found entity 1: UART_TX File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/UART_TX.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file button_test.vhd
+    Info (12022): Found design unit 1: Button_test-arch File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/Button_test.vhd Line: 11
+    Info (12023): Found entity 1: Button_test File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/Button_test.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file btn_debounce_toggle.vhd
+    Info (12022): Found design unit 1: btn_debounce_toggle-Behavioral File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/btn_debounce_toggle.vhd Line: 48
+    Info (12023): Found entity 1: btn_debounce_toggle File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/btn_debounce_toggle.vhd Line: 32
+Info (12021): Found 2 design units, including 1 entities, in source file button_rtl.vhd
+    Info (12022): Found design unit 1: Button_RTL-arch File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/Button_RTL.vhd Line: 34
+    Info (12023): Found entity 1: Button_RTL File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/Button_RTL.vhd Line: 11
+Info (12021): Found 2 design units, including 1 entities, in source file pianoslide_rtl.vhd
+    Info (12022): Found design unit 1: PianoSlide_RTL-RTL File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/PianoSlide_RTL.vhd Line: 20
+    Info (12023): Found entity 1: PianoSlide_RTL File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/PianoSlide_RTL.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file ladder_rtl.vhd
+    Info (12022): Found design unit 1: Ladder_RTL-RTL File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/Ladder_RTL.vhd Line: 17
+    Info (12023): Found entity 1: Ladder_RTL File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/Ladder_RTL.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file bidir.vhd
+    Info (12022): Found design unit 1: bidir-maxpld File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/bidir.vhd Line: 13
+    Info (12023): Found entity 1: bidir File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/bidir.vhd Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file ir.v
+    Info (12023): Found entity 1: ir File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/ir.v Line: 22
+Info (12021): Found 2 design units, including 1 entities, in source file ir2.vhd
+    Info (12022): Found design unit 1: ir2-Behavioral File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/ir2.vhd Line: 22
+    Info (12023): Found entity 1: ir2 File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/ir2.vhd Line: 6
+Info (12021): Found 2 design units, including 1 entities, in source file ladder_rtl2.vhd
+    Info (12022): Found design unit 1: Ladder_RTL2-RTL File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/Ladder_RTL2.vhd Line: 20
+    Info (12023): Found entity 1: Ladder_RTL2 File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/Ladder_RTL2.vhd Line: 9
+Info (12021): Found 2 design units, including 1 entities, in source file servo_demo.vhd
+    Info (12022): Found design unit 1: servo_demo-rtl File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/servo_demo.vhd Line: 31
+    Info (12023): Found entity 1: servo_demo File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/servo_demo.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file servo_rtl.vhd
+    Info (12022): Found design unit 1: SERVO_RTL-MACHINE File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/SERVO_RTL.vhd Line: 22
+    Info (12023): Found entity 1: SERVO_RTL File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/SERVO_RTL.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file uart_rx.vhd
+    Info (12022): Found design unit 1: UART_RX-arch File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/UART_RX.vhd Line: 28
+    Info (12023): Found entity 1: UART_RX File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/UART_RX.vhd Line: 8
+Info (12021): Found 2 design units, including 1 entities, in source file top.vhd
+    Info (12022): Found design unit 1: TOP-CRAZYMACHINE File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/TOP.vhd Line: 29
+    Info (12023): Found entity 1: TOP File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/TOP.vhd Line: 4
+Info (12021): Found 2 design units, including 1 entities, in source file output_files/ws2812b_controller.vhd
+    Info (12022): Found design unit 1: ws2812b_controller-RTL File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/output_files/ws2812b_controller.vhd Line: 48
+    Info (12023): Found entity 1: ws2812b_controller File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/output_files/ws2812b_controller.vhd Line: 18
+Info (12021): Found 2 design units, including 1 entities, in source file output_files/ws2812b_gamma.vhd
+    Info (12022): Found design unit 1: ws2812b_gamma-RTL File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/output_files/ws2812b_gamma.vhd Line: 24
+    Info (12023): Found entity 1: ws2812b_gamma File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/output_files/ws2812b_gamma.vhd Line: 17
+Info (12021): Found 2 design units, including 1 entities, in source file output_files/ws2812b_phy.vhd
+    Info (12022): Found design unit 1: ws2812b_phy-RTL File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/output_files/ws2812b_phy.vhd Line: 42
+    Info (12023): Found entity 1: ws2812b_phy File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/output_files/ws2812b_phy.vhd Line: 17
+Info (12021): Found 2 design units, including 1 entities, in source file output_files/demo_rainbow.vhd
+    Info (12022): Found design unit 1: demo_rainbow-RTL File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/output_files/demo_rainbow.vhd Line: 31
+    Info (12023): Found entity 1: demo_rainbow File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/output_files/demo_rainbow.vhd Line: 21
+Info (12021): Found 2 design units, including 1 entities, in source file servo.vhd
+    Info (12022): Found design unit 1: servo-Behavioral File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/servo.vhd Line: 23
+    Info (12023): Found entity 1: servo File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/servo.vhd Line: 14
+Info (12021): Found 2 design units, including 1 entities, in source file led_control_test.vhd
+    Info (12022): Found design unit 1: LED_Control_TEST-Behavioral File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/LED_CONTROL_TEST.vhd Line: 12
+    Info (12023): Found entity 1: LED_Control_TEST File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/LED_CONTROL_TEST.vhd Line: 5
+Info (12127): Elaborating entity "demo_rainbow" for the top level hierarchy
+Warning (10631): VHDL Process Statement warning at demo_rainbow.vhd(123): inferring latch(es) for signal or variable "pixData_red_start", which holds its previous value in one or more paths through the process File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/output_files/demo_rainbow.vhd Line: 123
+Warning (10631): VHDL Process Statement warning at demo_rainbow.vhd(123): inferring latch(es) for signal or variable "pixData_green_start", which holds its previous value in one or more paths through the process File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/output_files/demo_rainbow.vhd Line: 123
+Warning (10631): VHDL Process Statement warning at demo_rainbow.vhd(123): inferring latch(es) for signal or variable "pixData_blue_start", which holds its previous value in one or more paths through the process File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/output_files/demo_rainbow.vhd Line: 123
+Info (10041): Inferred latch for "pixData_blue_start[0]" at demo_rainbow.vhd(123) File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/output_files/demo_rainbow.vhd Line: 123
+Info (10041): Inferred latch for "pixData_green_start[0]" at demo_rainbow.vhd(123) File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/output_files/demo_rainbow.vhd Line: 123
+Info (10041): Inferred latch for "pixData_red_start[0]" at demo_rainbow.vhd(123) File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/output_files/demo_rainbow.vhd Line: 123
+Info (12128): Elaborating entity "ws2812b_phy" for hierarchy "ws2812b_phy:ws2812b_phy_inst" File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/output_files/demo_rainbow.vhd Line: 69
+Info (12128): Elaborating entity "ws2812b_gamma" for hierarchy "ws2812b_gamma:ws2812b_gamma_red_inst" File: C:/Users/khaled/Desktop/ADD reference/Group-5-Piano-Fgpa-DE10lite-main/Group-5-Piano-Fgpa-DE10lite-main/Piano fpga/Piano fpga/output_files/demo_rainbow.vhd Line: 85
+Info (286030): Timing-Driven Synthesis is running
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 427 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 1 input pins
+    Info (21059): Implemented 1 output pins
+    Info (21061): Implemented 425 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 4801 megabytes
+    Info: Processing ended: Tue Jun 11 19:28:51 2024
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:12
+
+
